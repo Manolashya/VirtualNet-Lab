@@ -48,7 +48,7 @@ public class HomeScreen {
                 "Try parity, CRC, Hamming code and Stop-and-Wait ARQ.",
                 "Explore IPv4 addressing, subnetting and shortest-path routing.",
                 "Compare simplified TCP and UDP behaviour under packet loss.",
-                "Simulate DNS lookups and HTTP request/response exchanges."
+                "Simulate DNS, Email, HTTP requests and video streaming through CDN."
         };
 
         Tile[] tiles = new Tile[5];

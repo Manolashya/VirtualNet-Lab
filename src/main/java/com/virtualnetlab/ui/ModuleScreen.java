@@ -23,7 +23,7 @@ public class ModuleScreen {
             "Binary data for parity, CRC, Hamming code and ARQ",
             "IPv4 address, subnet mask and router link costs",
             "Message and packet-loss percentage",
-            "Domain name and HTTP request details"
+            "DNS, Email, HTTP requests and video streaming simulations"
     };
 
     public ModuleScreen(Stage stage, int unit) {
@@ -80,9 +80,21 @@ public class ModuleScreen {
         output.setEditable(false);
         output.setWrapText(true);
         output.setPrefRowCount(12);
-        output.setText("Enter a value and click Run Simulation.\n\n" +
-                "Note: This starter screen currently uses placeholder demo output. " +
-                "The assigned module member must connect the tested algorithm here.");
+        if (unit == 5) {
+    output.setText(
+            "APPLICATION LAYER SIMULATIONS\n\n" +
+            "1. DNS Lookup\n" +
+            "www.example.com\n\n" +
+            "2. Email Simulation\n" +
+            "action=email, from=alice@example.com, to=bob@example.com, subject=Hello, body=Welcome\n\n" +
+            "3. HTTP Simulation\n" +
+            "action=http, domain=www.example.com, path=/index.html\n\n" +
+            "4. Video Streaming\n" +
+            "action=stream, domain=video.example.com, chunks=3, chunkSizeMb=5"
+    );
+} else {
+    output.setText("Enter a value and click Run Simulation.");
+}
         output.setStyle("-fx-control-inner-background: #08111f; -fx-text-fill: #cbd5e1; " +
                 "-fx-highlight-fill: #0ea5e9; -fx-font-family: 'Consolas';");
 
@@ -102,7 +114,7 @@ public class ModuleScreen {
             case 2 -> "Example: 1011001";
             case 3 -> "Example: source=A, destination=E";
             case 4 -> "Example: message=HELLO, lossPercent=20";
-            case 5 -> "Example: www.example.com";
+            case 5 -> "Enter a domain or an Application Layer action";
             default -> "Enter simulation input";
         };
     }
