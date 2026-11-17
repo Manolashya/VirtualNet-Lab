@@ -2,8 +2,8 @@
 # Unit II – Data Link Layer
 
 ## 1. Overview
-This module implements important Data Link Layer
-algorithms using Java.
+
+This module implements important Data Link Layer algorithms using Java as part of the VirtualNet Lab project.
 
 ## 2. Implemented Algorithms
 
@@ -33,7 +33,7 @@ algorithms using Java.
 
 ## 3. Java Package
 
-com.virtualnetlab.datalink
+`com.virtualnetlab.datalink`
 
 ## 4. Source Files
 
@@ -54,9 +54,11 @@ com.virtualnetlab.datalink
 | Stop-and-Wait | 3 frames | ACK and retransmission trace |
 
 ## 6. Programming Language
+
 Java
 
 ## 7. Limitations
+
 - Basic parity cannot detect every even-numbered bit error.
 - Hamming (7,4) is designed to correct single-bit errors.
 - Stop-and-Wait is a simulation, not actual socket-based communication.
