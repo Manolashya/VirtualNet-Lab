@@ -1,39 +1,49 @@
 
 package com.virtualnetlab.datalink;
 
-public class DataLinkLayerTest {
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-    public static void main(String[] args) {
+class DataLinkLayerTest {
 
-        String even = Parity.generateEvenParity("1011");
-        System.out.println("Even Parity: "
-                + (even.equals("10111") ? "PASS" : "FAIL"));
+    @Test
+    void testEvenParity() {
+        assertEquals("10111", Parity.generateEvenParity("1011"));
+    }
 
-        String odd = Parity.generateOddParity("1011");
-        System.out.println("Odd Parity: "
-                + (odd.equals("10110") ? "PASS" : "FAIL"));
+    @Test
+    void testOddParity() {
+        assertEquals("10110", Parity.generateOddParity("1011"));
+    }
 
+    @Test
+    void testCRCGeneration() {
         String crc = CRC.generateCRC("1101", "1011");
-        System.out.println("CRC Generation: "
-                + (crc.equals("1101001") ? "PASS" : "FAIL"));
+        assertEquals("1101001", crc);
+    }
 
-        System.out.println("CRC Verification: "
-                + (CRC.verifyCRC(crc, "1011") ? "PASS" : "FAIL"));
+    @Test
+    void testCRCVerification() {
+        String crc = CRC.generateCRC("1101", "1011");
+        assertTrue(CRC.verifyCRC(crc, "1011"));
+    }
 
-        String hamming = HammingCode.encode("1011");
-        System.out.println("Hamming Encoding: "
-                + (hamming.equals("0110011") ? "PASS" : "FAIL"));
+    @Test
+    void testHammingEncoding() {
+        assertEquals("0110011", HammingCode.encode("1011"));
+    }
 
-        String corrected = HammingCode.correctError("0110001");
-        System.out.println("Hamming Correction: "
-                + (corrected.equals("0110011") ? "PASS" : "FAIL"));
+    @Test
+    void testHammingCorrection() {
+        assertEquals("0110011", HammingCode.correctError("0110001"));
+    }
 
-        boolean stopWait = StopAndWait.simulate(3, 2, 0)
+    @Test
+    void testStopAndWait() {
+        boolean result = StopAndWait.simulate(3, 2, 0)
                 .stream()
                 .anyMatch(line -> line.contains("ACK 3 received"));
 
-        System.out.println("Stop-and-Wait: "
-                + (stopWait ? "PASS" : "FAIL"));
+        assertTrue(result);
     }
 }
-
